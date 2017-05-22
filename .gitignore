@@ -9,10 +9,10 @@
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
-out/
+/out/
 out/*
-
-.idea/libraries
+target/
+.idea/libraries/
 .idea/libraries/*
 
 # Package Files #
