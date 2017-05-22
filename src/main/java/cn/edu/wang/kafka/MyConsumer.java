@@ -1,5 +1,9 @@
 package cn.edu.wang.kafka;
 
+import cn.edu.wang.entity.Person;
+import cn.edu.wang.neo4j.Import2Neo4j;
+import cn.edu.wang.titan.Import2Titan;
+import com.google.gson.Gson;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -27,9 +31,17 @@ public class MyConsumer {
 
     public void getMessage(){
         while (true) {
+            Import2Neo4j import2Neo4j = new Import2Neo4j();
+            Import2Titan import2Titan = new Import2Titan();
             ConsumerRecords<String, String> records = consumer.poll(100);
-            for (ConsumerRecord<String, String> record : records)
-                System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
+            for (ConsumerRecord<String, String> record : records){
+                //System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
+                String gson = record.value();
+                Person person = new Gson().fromJson(gson,Person.class);
+                //System.out.println(person.getName());
+                import2Neo4j.importPerson(person);
+                import2Titan.importPerson(person);
+            }
         }
     }
 
