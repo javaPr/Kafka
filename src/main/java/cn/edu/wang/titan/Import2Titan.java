@@ -29,7 +29,7 @@ public class Import2Titan {
     public void importPerson(Person person){
         /*graph.addVertex(T.label,"Pet","name","thisisname","gmsfhm","123456789");*/
         TitanTransaction tx = graph.newTransaction();
-        g.V().has("gmsfhm")
+       // g.V().has("gmsfhm")
         TitanVertex vertex =  tx.addVertex(T.label,"Person","name",person.getName(),
                 "mz",person.getMz(),"zzmm",person.getZzmm(),"csrq",person.getCsrq(),
                 "gmsfhm",person.getGmsfhm(),"whcd",person.getWhcd());
