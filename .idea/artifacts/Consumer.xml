@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact name="Consumer">
+    <output-path>$PROJECT_DIR$/out/artifacts/Consumer</output-path>
+    <root id="root">
+      <element id="archive" name="Kafka.jar">
+        <element id="module-output" name="Kafka" />
+      </element>
+      <element id="library" level="project" name="Maven: net.jpountz.lz4:lz4:1.3.0" />
+      <element id="library" level="project" name="Maven: org.xerial.snappy:snappy-java:1.1.2.6" />
+      <element id="library" level="project" name="Maven: org.apache.kafka:kafka-clients:0.10.2.0" />
+      <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.21" />
+    </root>
+  </artifact>
+</component>
