@@ -3,6 +3,8 @@ package cn.edu.wang.neo4j;
 import cn.edu.wang.entity.Person;
 import org.neo4j.driver.v1.*;
 
+import java.util.Random;
+
 import static org.neo4j.driver.v1.Values.parameters;
 
 /**
@@ -19,6 +21,26 @@ public class Import2Neo4j {
   p.csrq as born,
    p.gmsfhm as idNumber,
    p.whcd*/
+
+
+    public void addPerson(Person person){
+        int age = new Random(42).nextInt(60)+10;
+        if (person != null){
+            //System.out.println(person);
+            try (Session session = driver.session()) {
+                try (Transaction tx = session.beginTransaction()) {
+                    StatementResult result = tx.run("match(p:Person{gmsfhm:{gmsfhm}}) return p",
+                            parameters("gmsfhm",person.getGmsfhm()));
+                    tx.run("CREATE (p:Person {name: {name},gmsfhm:{gmsfhm},age:{age}})",
+                            parameters("name", person.getName(),
+                                    "gmsfhm",person.getGmsfhm(),
+                                    "age",age));
+                    tx.success();
+
+                }
+            }
+        }
+    }
     public void importPerson(Person person){
         if (person != null){
             //System.out.println(person);

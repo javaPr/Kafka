@@ -30,17 +30,19 @@ public class MyConsumer {
     }
 
     public void getMessage(){
+        Import2Neo4j import2Neo4j = new Import2Neo4j();
+        Import2Titan import2Titan = new Import2Titan();
         while (true) {
-            Import2Neo4j import2Neo4j = new Import2Neo4j();
-            Import2Titan import2Titan = new Import2Titan();
+
             ConsumerRecords<String, String> records = consumer.poll(100);
             for (ConsumerRecord<String, String> record : records){
                 //System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
                 String gson = record.value();
+                //System.out.println(gson);
                 Person person = new Gson().fromJson(gson,Person.class);
                 //System.out.println(person.getName());
-                import2Neo4j.importPerson(person);
-                import2Titan.importPerson(person);
+                import2Neo4j.addPerson(person);
+//                import2Titan.importPerson(person);
             }
         }
     }
