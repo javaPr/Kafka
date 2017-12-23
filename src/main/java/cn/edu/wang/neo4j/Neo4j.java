@@ -27,13 +27,6 @@ public class Neo4j {
         try (Session session = driver.session()) {
             try (Transaction tx = session.beginTransaction()) {
                 StatementResult result = tx.run("match(p:Person)-[r]->(n) return p,n,type(r) skip 10 limit(1000000   )");//{gmsfhm:"925678195007284933"}
-                //int size = result.list().size();
-               /* List<Record> records = result.list();
-               *//* for (Record record:records){
-
-                }*//*
-
-                System.out.println(records.size());*/
 
                 while (result.hasNext()){
                     Record record = result.next();
@@ -43,8 +36,7 @@ public class Neo4j {
                         Value sourceNode = list.get(0);
                         if (sourceNode instanceof NodeValue){
                             Node node = sourceNode.asNode();
-                           /* System.out.println(node.labels().iterator().next());
-                            System.out.println(node.asMap());*/
+
                             Map<String, Object> map = node.asMap();
                             if (map == null || map.size() < 1) continue;
                             for (Map.Entry entry :node.asMap().entrySet()){
@@ -105,7 +97,6 @@ public class Neo4j {
                         }
 
                         String gson = new Gson().toJson(person);
-                        //System.out.println("==================="+gson);
                         producer.sendMessage("person",gson);
                     }
                 }

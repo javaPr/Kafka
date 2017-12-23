@@ -9,9 +9,8 @@ import java.io.FileWriter;
  */
 public class Utils {
     public static void write(String data,boolean newLine){
-        //String data = " This content will append to the end of the file";
         try{
-            File file =new File("result_realEnv.txt");
+            File file =new File("result.txt");
 
             //if file doesnt exists, then create it
             if(!file.exists()){

@@ -11,7 +11,7 @@ public class Person {
     private String zzmm;//政治身份
     private String csrq;//出生日期
     private String gmsfhm;
-    private String whcd;//收教育程度
+    private String whcd;//教育程度
 
     private GeneralNode generalNode;
 
@@ -122,9 +122,3 @@ public class Person {
         this.generalNode = generalNode;
     }
 }
-/*
-p.name as name, " +
-  "p.mz as nation,p.zzmm as politicalIdentity,
-  p.csrq as born,
-   p.gmsfhm as idNumber,
-   p.whcd as degreeOfEducation*/

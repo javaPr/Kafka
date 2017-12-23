@@ -19,19 +19,12 @@ public class InsertNeo4j {
                         "p.mz as nation,p.zzmm as politicalIdentity,p.csrq as born, " +
                         "p.gmsfhm as idNumber,p.whcd as degreeOfEducation limit 10");*/
                 //StatementResult result = tx.run("match(p:Person)return p.name as name,p.age as age");
-                /*tx.run("CREATE (a:Person {name: {name}, title: {title}})",
-                        parameters("name", "Arthur", "title", "King"));*/
                 /*while (result.hasNext()){
                     Record record = result.next();
                     System.out.println(String.format("%s , %s ",record.get("name"),record.get("age")));
 
                 }*/
-                String name ="";
-               /* tx.run("CREATE (a:"+"Appel"+" {name: {name}, title: {title}})" +
-                                "CREATE (a1:"+"Appel"+" {name: {name2}, title: {title2}})" +
-                                "CREATE (a)-[:AC]->(a1)",
-                        parameters("name", "Q1", "title", "King3","name2", "Q2", "title2", "King3"));
-                */
+
                 Person person = new Person("nameTx","mz","zzmm","csrq","gmsfhm","whcd");
                 person.setRel("IN");
                 person.setGeneralNode(new GeneralNode(System.currentTimeMillis(),"Pet"));

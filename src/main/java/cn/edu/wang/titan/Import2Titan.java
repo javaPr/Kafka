@@ -71,18 +71,6 @@ public class Import2Titan {
         mgmt.commit();
 
         TitanTransaction tx = graph.newTransaction();
-        // vertices
-
-        /*Vertex nemean = tx.addVertex(T.label, "monster", "name", "nemean");
-        Vertex hydra = tx.addVertex(T.label, "monster", "name", "hydra");
-        Vertex cerberus = tx.addVertex(T.label, "monster", "name", "cerberus");
-        Vertex tartarus = tx.addVertex(T.label, "location", "name", "tartarus");*/
-
-        // edges
-
-        /*jupiter.addEdge("father", saturn);
-        jupiter.addEdge("lives", sky, "reason", "loves fresh breezes");*/
-
 
         // commit the transaction to disk
         tx.commit();
